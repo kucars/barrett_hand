@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/kuri/catkin_ws/src/owd_msgs/build/devel/setup.sh

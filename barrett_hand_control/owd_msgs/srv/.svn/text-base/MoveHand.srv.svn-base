@@ -1,0 +1,7 @@
+uint8 movetype
+float64[] positions
+uint8 movetype_position=1
+uint8 movetype_velocity=2
+---
+bool ok
+string reason

@@ -1,0 +1,20 @@
+# x,y,z should be direction of force, in WAM coordinates and units of meters
+# f should be force, in Newtons
+# Force will be applied at the current endpoint position in the
+# specified direction
+float64 force_x
+float64 force_y
+float64 force_z
+float64 torque_x
+float64 torque_y
+float64 torque_z
+float64 vibrate_hand_x
+float64 vibrate_hand_y
+float64 vibrate_hand_z
+float64 vibrate_amplitude_m
+float64 vibrate_frequency_hz
+bool rotational_compliance
+---
+bool ok
+string reason
+string id

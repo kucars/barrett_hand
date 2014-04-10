@@ -1,0 +1,16 @@
+# This is an OWD serialized trajectory, not an OpenRAVE trajectory
+#
+string SerializedTrajectory
+#
+# options come from the owd_msgs/JointTraj message
+uint32 options
+#
+# id string must be unique for each traj.  Will be truncated at 50 chars.
+# if you leave it empty then OWD will create a random id and return it to you.
+string id
+---
+bool ok
+string reason
+string id
+time time_added
+

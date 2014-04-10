@@ -1,0 +1,5 @@
+---
+bool ok
+string reason
+
+float32 stiffness

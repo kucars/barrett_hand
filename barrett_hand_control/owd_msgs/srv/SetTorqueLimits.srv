@@ -1,0 +1,4 @@
+int32[] limit
+---
+bool ok
+string reason

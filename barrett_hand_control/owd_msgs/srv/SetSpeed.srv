@@ -1,0 +1,5 @@
+float64[] velocities
+float64 min_accel_time
+---
+bool ok
+string reason

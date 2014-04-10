@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/22264/public/latest/owd_msgs
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/22264/public/latest/owd_msgs/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/22264/public/latest/owd_msgs/Makefile
+END
+manifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/22264/public/latest/owd_msgs/manifest.xml
+END
+package.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/22264/public/latest/owd_msgs/package.xml
+END

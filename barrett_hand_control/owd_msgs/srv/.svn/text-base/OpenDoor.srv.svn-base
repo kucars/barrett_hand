@@ -1,0 +1,7 @@
+owd_msgs/JointTraj traj
+geometry_msgs/Pose[] ee_pose
+geometry_msgs/Vector3 pull_direction
+---
+bool ok
+string reason
+string id

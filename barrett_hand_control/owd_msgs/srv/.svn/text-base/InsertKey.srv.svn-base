@@ -1,0 +1,4 @@
+---
+bool ok
+string reason
+uint32 id

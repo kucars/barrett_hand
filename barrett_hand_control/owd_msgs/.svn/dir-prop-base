@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 30
+bin
+build
+msg_gen
+src
+srv_gen
+
+K 13
+svn:mergeinfo
+V 91
+/branches/GfeRobot/trunk/src/pr_msgs:11153-11475
+/pr-ros-drivers/trunk/owd_msgs:21147-21633
+END

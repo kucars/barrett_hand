@@ -1,0 +1,4 @@
+owd_msgs/JointTraj traj
+uint32 id
+---
+uint32 id

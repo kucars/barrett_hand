@@ -1,0 +1,42 @@
+# Endpoint change is the relative move expressed in the WAM0 frame
+geometry_msgs/Pose endpoint_change
+#
+# Starting and ending config are the joint angles corresponding to the
+# start and end positions.  By the time the robot has arrived at the
+# ending config, the endpoint should have moved by endpoint_change.
+float64[] starting_config
+float64[] ending_config
+#
+# wrench is the optional force/torque to apply for the motion, expressed
+# in the WAM0 frame.  If wrench is zero then the trajectory will be executed
+# as a timed position-based trajectory.
+geometry_msgs/Wrench wrench
+#
+# optional ApplyForce values to use during the motion, in order to
+# maintain a sliding contact with a surface
+bool ApplyForce
+float64 af_x
+float64 af_y
+float64 af_z
+float64 af_f
+bool af_rotational_compliance
+#
+bool Vibrate
+float64 vibrate_hand_x
+float64 vibrate_hand_y
+float64 vibrate_hand_z
+float64 vibrate_amplitude_m
+float64 vibrate_frequency_hz
+#
+#
+# JS and WS speed limits
+float32 max_linear_velocity
+float32 max_angular_velocity
+float32 min_accel_time
+#
+# Trajectory options (same as OWD::AddTrajectory)
+uint32 options
+---
+uint32 id
+bool ok
+string reason

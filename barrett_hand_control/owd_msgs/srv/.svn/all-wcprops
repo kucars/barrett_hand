@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/22264/public/latest/owd_msgs/srv
+END
+CancelAllTrajectories.srv
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/22264/public/latest/owd_msgs/srv/CancelAllTrajectories.srv
+END
+SetTactileInputThreshold.srv
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetTactileInputThreshold.srv
+END
+WamRequestSeaCtrlKi.srv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/22264/public/latest/owd_msgs/srv/WamRequestSeaCtrlKi.srv
+END
+AddTrajectory.srv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/22264/public/latest/owd_msgs/srv/AddTrajectory.srv
+END
+SetController.srv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetController.srv
+END
+MoveHand.srv
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/22264/public/latest/owd_msgs/srv/MoveHand.srv
+END
+ApplyForce.srv
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/22264/public/latest/owd_msgs/srv/ApplyForce.srv
+END
+RelaxHand.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/RelaxHand.srv
+END
+SetStallSensitivity.srv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetStallSensitivity.srv
+END
+WamRequestSeaCtrlKp.srv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/22264/public/latest/owd_msgs/srv/WamRequestSeaCtrlKp.srv
+END
+SetForceInputThreshold.srv
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetForceInputThreshold.srv
+END
+StartHelixTraj.srv
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/22264/public/latest/owd_msgs/srv/StartHelixTraj.srv
+END
+GetDOF.srv
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/22264/public/latest/owd_msgs/srv/GetDOF.srv
+END
+DeleteTrajectory.srv
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/22264/public/latest/owd_msgs/srv/DeleteTrajectory.srv
+END
+ResetHand.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/ResetHand.srv
+END
+ResetFinger.srv
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/22264/public/latest/owd_msgs/srv/ResetFinger.srv
+END
+SetTorqueLimits.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetTorqueLimits.srv
+END
+StopMoveDirection.srv
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/22264/public/latest/owd_msgs/srv/StopMoveDirection.srv
+END
+ApplyEEForceTorque.srv
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/22264/public/latest/owd_msgs/srv/ApplyEEForceTorque.srv
+END
+StepJoint.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/StepJoint.srv
+END
+WamRequestSeaCtrlTorqLimit.srv
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/22264/public/latest/owd_msgs/srv/WamRequestSeaCtrlTorqLimit.srv
+END
+AddTimedTrajectory.srv
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/22264/public/latest/owd_msgs/srv/AddTimedTrajectory.srv
+END
+Reset.srv
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/22264/public/latest/owd_msgs/srv/Reset.srv
+END
+AddWSTraj.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/AddWSTraj.srv
+END
+SetJointStiffness.srv
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetJointStiffness.srv
+END
+OpenDoor.srv
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/22264/public/latest/owd_msgs/srv/OpenDoor.srv
+END
+SetFingerCompliant.srv
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetFingerCompliant.srv
+END
+StopHelixTraj.srv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/22264/public/latest/owd_msgs/srv/StopHelixTraj.srv
+END
+GetSpeed.srv
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/22264/public/latest/owd_msgs/srv/GetSpeed.srv
+END
+StopForce.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/StopForce.srv
+END
+GetStiffness.srv
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/22264/public/latest/owd_msgs/srv/GetStiffness.srv
+END
+StartTeleop.srv
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/22264/public/latest/owd_msgs/srv/StartTeleop.srv
+END
+SetSpeed.srv
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetSpeed.srv
+END
+InsertKey.srv
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/22264/public/latest/owd_msgs/srv/InsertKey.srv
+END
+CalibrateJoints.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/CalibrateJoints.srv
+END
+SetGains.srv
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetGains.srv
+END
+GetHandProperty.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/GetHandProperty.srv
+END
+SetStiffness.srv
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetStiffness.srv
+END
+ReplaceTrajectory.srv
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/22264/public/latest/owd_msgs/srv/ReplaceTrajectory.srv
+END
+SetExtraMass.srv
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetExtraMass.srv
+END
+PauseTrajectory.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/PauseTrajectory.srv
+END
+StartMoveDirection.srv
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/22264/public/latest/owd_msgs/srv/StartMoveDirection.srv
+END
+SetHandTorque.srv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetHandTorque.srv
+END
+SetJointOffsets.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetJointOffsets.srv
+END
+WamRequestSeaCtrlKd.srv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/22264/public/latest/owd_msgs/srv/WamRequestSeaCtrlKd.srv
+END
+GetStallSensitivity.srv
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/22264/public/latest/owd_msgs/srv/GetStallSensitivity.srv
+END
+SetHandProperty.srv
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/22264/public/latest/owd_msgs/srv/SetHandProperty.srv
+END

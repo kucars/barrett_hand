@@ -1,0 +1,11 @@
+uint8 link
+float64 mass
+float64 cog_x
+float64 cog_y
+float64 cog_z
+float64 inertia_xx
+float64 inertia_xy
+float64 inertia_xz
+float64 inertia_yy
+float64 inertia_yz
+float64 inertia_zz

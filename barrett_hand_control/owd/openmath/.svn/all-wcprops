@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/22264/public/latest/owd/openmath
+END
+SE3.cc
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/22264/public/latest/owd/openmath/SE3.cc
+END
+Inertia.cc
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/22264/public/latest/owd/openmath/Inertia.cc
+END
+R3.hh
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/22264/public/latest/owd/openmath/R3.hh
+END
+SO3.hh
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/22264/public/latest/owd/openmath/SO3.hh
+END
+R4.hh
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/22264/public/latest/owd/openmath/R4.hh
+END
+R6.hh
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/22264/public/latest/owd/openmath/R6.hh
+END
+SE3.hh
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/22264/public/latest/owd/openmath/SE3.hh
+END
+SO3.cc
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/22264/public/latest/owd/openmath/SO3.cc
+END
+ZYX.hh
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/22264/public/latest/owd/openmath/ZYX.hh
+END
+main.cc
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/22264/public/latest/owd/openmath/main.cc
+END
+Inertia.hh
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/22264/public/latest/owd/openmath/Inertia.hh
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/22264/public/latest/owd/openmath/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/22264/public/latest/owd/openmath/Makefile
+END
