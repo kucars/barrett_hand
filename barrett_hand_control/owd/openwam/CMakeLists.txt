@@ -82,5 +82,5 @@ endif (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
 
 include_directories (../openmath)
 
-add_executable(MacTrajTest MacTrajTest.cc)
-target_link_libraries(MacTrajTest openwamsim)
+#add_executable(MacTrajTest MacTrajTest.cc)
+#target_link_libraries(MacTrajTest openwamsim)

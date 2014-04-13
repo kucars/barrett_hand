@@ -1,7 +1,0 @@
-# If input_topic is an empty string, then owd_plugins will use a
-# default topic name associated with the selected type of teleop.
-string input_topic
----
-bool ok
-string reason
-uint32 id

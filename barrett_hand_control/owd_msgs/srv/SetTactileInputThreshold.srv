@@ -1,6 +1,0 @@
-int32 pad_number
-float32 threshold
-int32 minimum_readings
----
-bool ok
-string reason

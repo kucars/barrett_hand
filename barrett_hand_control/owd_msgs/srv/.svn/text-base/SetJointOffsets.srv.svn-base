@@ -1,4 +1,0 @@
-float64[] offset
----
-bool ok
-string reason

@@ -1,6 +1,0 @@
-float32 amplitude
-float32 pitch
----
-bool ok
-string reason
-uint32 id

@@ -1,5 +1,0 @@
-bool  enable
-int32 strain
----
-bool ok
-string reason

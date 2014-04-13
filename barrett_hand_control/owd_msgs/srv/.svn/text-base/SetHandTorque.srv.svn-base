@@ -1,5 +1,0 @@
-int32 initial
-int32 sustained
----
-bool ok
-string reason
