@@ -17,13 +17,13 @@ add_definitions("-O0 -ggdb3 -DWRIST -DBH8")
 
 
 
-include_directories(include owd ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+#include_directories(include owd ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
-add_executable(barrett_interface src/BarrettInterface.cpp)
-target_link_libraries(
-  barrett_interface
-  ${catkin_LIBRARIES}
-)
+#add_executable(barrett_interface src/BarrettInterface.cpp)
+#target_link_libraries(
+#  barrett_interface
+#  ${catkin_LIBRARIES}
+#)
 
 #add_executable(move_hand_action_server src/MoveHandActionServer.cpp)
 
