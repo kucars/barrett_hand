@@ -57,19 +57,19 @@ endif (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
 
 if (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
 if (RT_BUILD)
-  add_executable(owdrt owd.cpp openwamdriver.cpp bhd280.cc
-                                ft.cc tactile.cc)
-  target_link_libraries(owdrt wamcanrt openwam openmath lapack blas
-                              gfortran ${CANBUS_LIBS} ${RT_LIBS})
-  set(owdrt "${CANBUS_DEFS} ${RT_DEFS}")
-  set(owdrt "${CANBUS_LDFLAGS}")
+  #add_executable(owdrt owd.cpp openwamdriver.cpp bhd280.cc
+  #                              ft.cc tactile.cc)
+  #target_link_libraries(owdrt wamcanrt openwam openmath lapack blas
+  #                            gfortran ${CANBUS_LIBS} ${RT_LIBS})
+  #set(owdrt "${CANBUS_DEFS} ${RT_DEFS}")
+  #set(owdrt "${CANBUS_LDFLAGS}")
 
-  add_executable(canbhdrt owd.cpp openwamdriver.cpp bhd280.cc
-                                   ft.cc tactile.cc)
-  target_link_libraries(canbhdrt bhdcanrt openwam openmath lapack blas
-      	                         gfortran ${CANBUS_LIBS} ${RT_LIBS})
-  set(canbhdrt "-DBH280 -DBH280_ONLY ${CANBUS_DEFS} ${RT_DEFS}")
-  set(canbhdrt "${CANBUS_LDFLAGS}")
+  #add_executable(canbhdrt owd.cpp openwamdriver.cpp bhd280.cc
+  #                                 ft.cc tactile.cc)
+  #target_link_libraries(canbhdrt bhdcanrt openwam openmath lapack blas
+  #    	                         gfortran ${CANBUS_LIBS} ${RT_LIBS})
+  #set(canbhdrt "-DBH280 -DBH280_ONLY ${CANBUS_DEFS} ${RT_DEFS}")
+  #set(canbhdrt "${CANBUS_LDFLAGS}")
 endif (RT_BUILD)
 endif (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
 
