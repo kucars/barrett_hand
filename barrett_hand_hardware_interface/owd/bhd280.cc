@@ -27,7 +27,7 @@
 
 
 #include "bhd280.hh"
-#include "CANdefs.hh"		// for HANDSTATE_* enumeration
+
 
 BHD_280::BHD_280(CANbus *cb) : node("bhd"), bus(cb) {
   AdvertiseAndSubscribe(node);

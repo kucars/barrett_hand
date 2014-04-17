@@ -32,17 +32,17 @@ set (CANBUS_LIBS "")
 endif (CANBUS_TYPE STREQUAL "ESD")
 
 if (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
-add_executable(owd owd.cpp openwamdriver.cpp bhd280.cc
-                            ft.cc tactile.cc)
-target_link_libraries(owd wamcan openwam openmath lapack blas
-			  gfortran ${CANBUS_LIBS}   ${catkin_LIBRARIES})
+#add_executable(owd owd.cpp openwamdriver.cpp bhd280.cc
+#                            ft.cc tactile.cc)
+#target_link_libraries(owd wamcan openwam openmath lapack blas
+			  #gfortran ${CANBUS_LIBS}   ${catkin_LIBRARIES})
 set(owd -DBH280_ONLY "${CANBUS_DEFS}")
 set(owd "${CANBUS_LDFLAGS}")
 
-add_executable(canbhd owd.cpp openwamdriver.cpp bhd280.cc
-                               ft.cc tactile.cc)
-target_link_libraries(canbhd bhdcan openwam openmath lapack blas
-			     gfortran ${CANBUS_LIBS}   ${catkin_LIBRARIES})
+#add_executable(canbhd owd.cpp openwamdriver.cpp bhd280.cc
+#                               ft.cc tactile.cc)
+#target_link_libraries(canbhd bhdcan openwam openmath lapack blas
+#			     gfortran ${CANBUS_LIBS}   ${catkin_LIBRARIES})
 set(canbhd "-DBH280 -DBH280_ONLY ${CANBUS_DEFS}")
 set(canbhd "${CANBUS_LDFLAGS}" )
 endif (CANBUS_TYPE STREQUAL "ESD" OR CANBUS_TYPE STREQUAL "PEAK")
@@ -86,4 +86,4 @@ elseif (VENDOR_ID STREQUAL "CentaurHauls")
     add_definitions("-march=c3-2")
 endif  (DEFINED ENV{OWD_MARCH_FLAGS})
 
-add_custom_target(SUID ALL sudo chown root ../owd COMMAND sudo chmod u+s ../owd DEPENDS owd)
+#add_custom_target(SUID ALL sudo chown root ../owd COMMAND sudo chmod u+s ../owd DEPENDS owd)

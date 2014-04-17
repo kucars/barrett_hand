@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include <ros/ros.h>
-#include <CANbus.hh>
+#include "openwam/CANbus.hh"
 #include <owd_msgs/BHTactile.h>
 
 class Tactile {

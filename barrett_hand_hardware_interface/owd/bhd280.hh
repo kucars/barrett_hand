@@ -21,7 +21,8 @@
  ***********************************************************************/
 
 #include <ros/ros.h>
-#include <CANbus.hh>
+#include "openwam/CANbus.hh"
+#include "openwam/CANdefs.hh"
 #include <tf/transform_broadcaster.h>
 #include <owd_msgs/BHState.h>
 #include <owd_msgs/MoveHand.h>

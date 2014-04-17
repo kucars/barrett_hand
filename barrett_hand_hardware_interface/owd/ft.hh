@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include <ros/ros.h>
-#include <CANbus.hh>
+#include "openwam/CANbus.hh"
 #include <geometry_msgs/WrenchStamped.h>
 #include <geometry_msgs/Vector3.h>
 #include <owd_msgs/Reset.h>
