@@ -1,0 +1,13 @@
+<launch>
+  <arg name="model" default="$(find barrett_hand_description)/robots/barrett_hand.urdf.xacro"/>
+  <arg name="gui" default="False" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+
+
+  <node name="barrett_hand_hardware_interface" pkg="barrett_hand_hardware_interface" type="barrett_hand_hardware_interface_node" respawn="false" output="screen" ns="/barrett_hand"/>
+
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node ns="/barrett_hand" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+</launch>

@@ -137,6 +137,7 @@ CANbus::CANbus(int32_t bus_id, int number_of_arm_pucks, bool bh280, bool ft, boo
     }
   }
   if (tactile) {
+	ROS_INFO("INITIALIZE TACTILE DATA");
     // allocate with calloc so that the values are initialized to zero
     tactile_data = (float *) calloc(96, sizeof(float));
   }
@@ -301,6 +302,7 @@ int CANbus::open(){
 }
 
 int CANbus::check(){
+  std::cout << "NUM nodes:" << NUM_NODES << std::endl;
   int32_t nodes[NUM_NODES+1];//, value;
   int online_pucks;
 
@@ -581,7 +583,7 @@ int CANbus::status(int32_t* nodes){
   int low=NODE_MIN;
   int high=NODE_MAX;
 #ifdef BH280_ONLY
-
+  std::cout << " HAND ONLY "  << std::endl;
   if (forcetorque_data) {
     low=8;
   } else {
@@ -886,8 +888,8 @@ int CANbus::extra_bus_commands() {
   }
 #else // ! OWD_RT
   bool mutex_locked=false;
-
-
+	//ROS_INFO("UAAAAH");
+        //std::cout << "size:"<<hand_command_queue.size() << std::endl;
   //if (!mutex_trylock(&hand_queue_mutex)) {
     mutex_locked=true;
     if (hand_command_queue.size() > 0) {
@@ -1372,15 +1374,17 @@ int CANbus::process_forcetorque_response_rt(int32_t msgid, uint8_t* msg, int32_t
 
 int CANbus::request_tactile_rt() {
   if (! tactile_data) {
+	ROS_INFO("NBOOOOOOOOOOOO");
     return OW_FAILURE;
   }
-
+	ROS_INFO("YEEEES");
   uint8_t  msg[8];
 
   // Compile the packet
   msg[0] = (uint8_t)TACT;
 
   if(send_rt(GROUPID(5), msg, 1, 100) == OW_FAILURE){
+    ROS_INFO("OLA@");
     ROS_WARN("CANbus::request_tactile_rt: send failed: %s",last_error);
     return OW_FAILURE;
   }
@@ -2320,7 +2324,7 @@ int CANbus::hand_activate(int32_t *nodes) {
 }
 
 int CANbus::request_hand_state_rt() {
-//ROS_INFO("ENTREI request_hand_state_rt");
+ROS_INFO("ENTREI request_hand_state_rt");
   // request the puck and motor temps
   if (request_property_rt(GROUPID(5),TEMP) != OW_SUCCESS) {
     ROS_WARN_NAMED("can_bh280",
@@ -2354,7 +2358,7 @@ int CANbus::request_hand_state_rt() {
 }
 
 int CANbus::process_hand_response_rt(int32_t msgid, uint8_t* msg, int32_t msglen) {
-  //ROS_INFO("ENTREI process_hand_response_rt");
+  ROS_INFO("ENTREI process_hand_response_rt");
   int32_t nodeid, property, value;
   // extract the payload
   if(parse(msgid, msg, msglen, &nodeid, &property, &value) != OW_SUCCESS){
@@ -2707,10 +2711,12 @@ int CANbus::hand_reset() {
     }
 
     if (tactile_data) {
+
       if (configure_tactile_sensors() != OW_SUCCESS) {
 	ROS_ERROR("Could not initialize Tactile Sensors");
 	return OW_FAILURE;
       }
+	ROS_INFO("INITIALIZED TACTILE SENSORS");
     }
     
     return OW_SUCCESS;
@@ -2814,6 +2820,7 @@ std::cout << " DONE MOVING" << std::endl;
       ROS_ERROR("Could not initialize Tactile Sensors");
       return OW_FAILURE;
     }
+	ROS_INFO("INITIALIZED TACTILE SENSORS");
   }
   for (unsigned int i=0; i<4; ++i) {
     handstate[i] = HANDSTATE_DONE;
@@ -2993,6 +3000,7 @@ int CANbus::hand_velocity(const std::vector<double> &v) {
  
 int CANbus::hand_torque(const std::vector<double> &t) {
   ROS_DEBUG_NAMED("bhd280", "executing hand_torque");
+  ROS_INFO("executing hand_torque");
 
   for (unsigned int f=0; f<4; ++f) {
     if (t[f] != 0) {
@@ -3108,7 +3116,6 @@ int CANbus::hand_get_positions(double &p1, double &p2, double &p3, double &p4) {
   p2 = finger_encoder_to_radians(hand_positions[2]);
   p3 = finger_encoder_to_radians(hand_positions[3]);
   p4 = spread_encoder_to_radians(hand_positions[4]);
-
   return OW_SUCCESS;
 }
  

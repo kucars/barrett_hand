@@ -23,6 +23,7 @@
    Carnegie Mellon University
    */
 
+
 #include "WAM.hh"
 #include "Plugin.hh"
 #include "Kinematics.hh"
@@ -956,7 +957,7 @@ void control_loop_rt(void* argv){
         RTIME read_start_time = ControlLoop::get_time_ns_rt(); // record the time
         int32_t time_to_wait = ControlLoop::PERIOD * 1e6  // sec to usecs
             - (read_start_time - loopstart_time) * 1e-3;  // nsecs to usecs
-        wam->lock("control loop");
+        //wam->lock("control loop");
         while (time_to_wait>0) {
             uint8_t  msg[8];
             int32_t msgid, msglen;

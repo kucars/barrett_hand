@@ -1,7 +1,6 @@
-<robot
-  name="barrett_hand_description">
-  <link
-    name="barrett_base_link">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="barrett_base_link">
     <inertial>
       <origin
         xyz="-1.53444878605399E-05 -0.00277693660903533 0.0352882290973172"
@@ -83,13 +82,13 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-3.141"
-      upper="0"
+      lower="0.0"
+      upper="3.141"
       effort="0"
       velocity="0" />
   </joint>
   <link
-    name="finger_1_med_liink">
+    name="finger_1_med_link">
     <inertial>
       <origin
         xyz="-0.030918176135544 0.0019693024932544 0.000743369842666108"
@@ -110,7 +109,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://barrett_hand_description/meshes/finger_1_med_liink.STL" />
+          filename="package://barrett_hand_description/meshes/finger_1_med_link.STL" />
       </geometry>
       <material
         name="">
@@ -124,7 +123,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://barrett_hand_description/meshes/finger_1_med_liink.STL" />
+          filename="package://barrett_hand_description/meshes/finger_1_med_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -133,16 +132,16 @@
     type="revolute">
     <origin
       xyz="-0.05 0 0.0339"
-      rpy="1.5708 -8.8281E-17 0" />
+      rpy="-1.5708 -8.8281E-17 0" />
     <parent
       link="finger_1_prox_link" />
     <child
-      link="finger_1_med_liink" />
+      link="finger_1_med_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.44"
-      upper="0"
+      lower="0"
+      upper="2.44"
       effort="0"
       velocity="0" />
   </joint>
@@ -188,12 +187,12 @@
   </link>
   <joint
     name="finger_1_dist_joint"
-    type="revolute">
+    type="fixed"> <!--original is revolute-->
     <origin
       xyz="-0.069936 0.003 0"
       rpy="1.6787E-18 -3.6382E-15 -6.1073E-33" />
     <parent
-      link="finger_1_med_liink" />
+      link="finger_1_med_link" />
     <child
       link="finger_1_dist_link" />
     <axis
@@ -307,7 +306,7 @@
     type="revolute">
     <origin
       xyz="-0.05 0 0.0339"
-      rpy="1.5708 -8.8281E-17 0" />
+      rpy="-1.5708 -8.8281E-17 0" />
     <parent
       link="finger_2_prox_link" />
     <child
@@ -315,8 +314,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.44"
-      upper="0"
+      lower="0.0"
+      upper="2.44"
       effort="0"
       velocity="0" />
   </joint>
@@ -362,7 +361,7 @@
   </link>
   <joint
     name="finger_2_dist_joint"
-    type="revolute">
+    type="fixed"> <!--original is revolute-->
     <origin
       xyz="-0.069917 0.0034087 0"
       rpy="-3.1382E-17 -2.3229E-16 0" />
@@ -423,7 +422,7 @@
     type="revolute">
     <origin
       xyz="0 -0.05 0.0754"
-      rpy="1.5708 6.123E-17 1.5708" />
+      rpy="-1.5708 6.123E-17 1.5708" />
     <parent
       link="barrett_base_link" />
     <child
@@ -431,8 +430,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.44"
-      upper="0"
+      lower="0.0"
+      upper="2.44"
       effort="0"
       velocity="0" />
   </joint>
@@ -478,7 +477,7 @@
   </link>
   <joint
     name="finger_3_dist_joint"
-    type="revolute">
+    type="fixed"> <!--original is revolute-->
     <origin
       xyz="-0.069936 0.003 0"
       rpy="6.0427E-17 -6.7283E-18 -4.0657E-34" />

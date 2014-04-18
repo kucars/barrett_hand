@@ -92,10 +92,10 @@ WamDriver::WamDriver(int canbus_number, int bh_model, bool forcetorque, bool tac
   ros::NodeHandle n("~");
   bool log_canbus_data;
   n.param("log_canbus_data",log_canbus_data,false);
-
 #ifndef BH280_ONLY
   bus=new CANbus(canbus_number, Joint::Jn, bh_model==280, forcetorque, tactile, log_canbus_data);
 #else
+std::cout << "canbus_number:" << canbus_number << " bh model:"  << bh_model << " force torque:" << forcetorque << " tactile:" << tactile << std::endl;
   bus=new CANbus(canbus_number, 0, bh_model==280, forcetorque, tactile, log_canbus_data);
 #endif // BH280_ONLY
 
@@ -271,7 +271,6 @@ bool WamDriver::Init(const char *joint_cal_file)
       bus->clear();
     } while ((bus->check() == OW_FAILURE) && (ros::ok()));
   }
-
   if (!ros::ok()) {
     return false;
   }

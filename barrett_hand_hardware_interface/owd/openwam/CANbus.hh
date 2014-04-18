@@ -23,6 +23,9 @@
       Carnegie Mellon University
 */
 
+#define PEAK_CAN
+#define BH280_ONLY
+
 #include <iostream>
 #include <fstream>
 #include <unistd.h>          // usleep
