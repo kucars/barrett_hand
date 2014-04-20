@@ -2,7 +2,7 @@ barrett_hand:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 20.0 
+    publish_rate: 50.0 
   
   # Position Controllers ---------------------------------------
   joint1_position_controller:
@@ -21,6 +21,57 @@ barrett_hand:
     type: position_controllers/JointPositionController
     joint: finger_1_prox_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint5_position_controller:
+    type: position_controllers/JointPositionController
+    joint: finger_2_prox_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  # Velocity Controllers ---------------------------------------
+  joint1_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: finger_1_med_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint2_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: finger_2_med_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint3_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: finger_3_med_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint4_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: finger_1_prox_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint5_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: finger_2_prox_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  # Trajectory Controllers ---------------------------------------
+  barrett_hand_trajectory_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - finger_1_med_joint
+      - finger_2_med_joint
+      - finger_3_med_joint
+      - finger_1_prox_joint
+      - finger_2_prox_joint
+    state_publish_rate: 100.0
+    action_monitor_rate: 50.0
+    constraints:
+      goal_time: 100.0                   # Override default
+      finger_1_med_joint:
+        trajectory: 0.01
+      finger_2_med_joint:
+        trajectory: 0.01
+      finger_3_med_joint:
+        trajectory: 0.01
+      finger_1_prox_joint:
+        trajectory: 0.01
+      finger_2_prox_joint:
+        trajectory: 0.01
+
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <link name="barrett_base_link">
-    <inertial>
+    <!--<inertial>
       <origin
         xyz="-1.53444878605399E-05 -0.00277693660903533 0.0352882290973172"
         rpy="0 0 0" />
@@ -14,7 +14,7 @@
         iyy="0.000361316175967098"
         iyz="-3.0792687327603E-05"
         izz="0.000376798128588446" />
-    </inertial>
+    </inertial>-->
     <visual>
       <origin
         xyz="0 0 0"
@@ -80,7 +80,7 @@
     <child
       link="finger_1_prox_link" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
       lower="0.0"
       upper="3.141"
@@ -106,7 +106,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_1_med_link.STL" />
@@ -164,7 +164,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_1_dist_link.STL" />
@@ -189,7 +189,7 @@
     name="finger_1_dist_joint"
     type="fixed"> <!--original is revolute-->
     <origin
-      xyz="-0.069936 0.003 0"
+      xyz="-0.069936 -0.003 0"
       rpy="1.6787E-18 -3.6382E-15 -6.1073E-33" />
     <parent
       link="finger_1_med_link" />
@@ -198,8 +198,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.785"
-      upper="0"
+      lower="0"
+      upper="0.785"
       effort="0"
       velocity="0" />
   </joint>
@@ -280,7 +280,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_2_med_link.STL" />
@@ -338,7 +338,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_2_dist_link.STL" />
@@ -363,7 +363,7 @@
     name="finger_2_dist_joint"
     type="fixed"> <!--original is revolute-->
     <origin
-      xyz="-0.069917 0.0034087 0"
+      xyz="-0.069917 -0.0034087 0"
       rpy="-3.1382E-17 -2.3229E-16 0" />
     <parent
       link="finger_2_med_link" />
@@ -396,7 +396,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_3_med_link.STL" />
@@ -454,7 +454,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265359 0 0" />
       <geometry>
         <mesh
           filename="package://barrett_hand_description/meshes/finger_3_dist_link.STL" />
@@ -479,7 +479,7 @@
     name="finger_3_dist_joint"
     type="fixed"> <!--original is revolute-->
     <origin
-      xyz="-0.069936 0.003 0"
+      xyz="-0.069936 -0.003 0"
       rpy="6.0427E-17 -6.7283E-18 -4.0657E-34" />
     <parent
       link="finger_3_med_link" />

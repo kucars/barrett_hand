@@ -3,6 +3,9 @@
   <rosparam file="$(find barrett_hand_control)/config/barrett_hand_control.yaml" command="load"/>
 
   <!-- load the controllers -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/barrett_hand" args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller"/>
+  <!--<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/barrett_hand" args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller"/>-->
 
+  <!--<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/barrett_hand" args="joint_state_controller joint1_velocity_controller joint2_velocity_controller joint3_velocity_controller joint4_velocity_controller"/>-->
+
+  <node ns="/barrett_hand" name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller barrett_hand_trajectory_controller"/>
 </launch>

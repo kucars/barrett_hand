@@ -19,7 +19,7 @@
 #include "openwam/CANbus.hh"
 
 #include "openwamdriver.h"
-#include "ft.hh"
+//#include "ft.hh"
 #include "tactile.hh"
 #include "bhd280.hh"
 
@@ -68,6 +68,8 @@ private:
 
 
     void readPosition();
+    void readTorque();
+    void readPositionAndComputeVelocity(ros::Duration &  period);
 
     void writePosition();
     void writeVelocity();
@@ -76,9 +78,10 @@ private:
 
 
     ros::NodeHandle n;
+    ros::Time prev_time;
 
     boost::shared_ptr<BHD_280> bhd;
-    //boost::shared_ptr<FT> ft;
+//    boost::shared_ptr<FT> ft;
     boost::shared_ptr<Tactile> tact;
 
     // OWD parameters

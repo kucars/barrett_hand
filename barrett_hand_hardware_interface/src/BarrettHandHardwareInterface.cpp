@@ -93,8 +93,6 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
     registerInterface(&jnt_eff_interface);
 
 
-
-
     int BH_MODEL=280;
     wamdriver = boost::shared_ptr<OWD::WamDriver> (new OWD::WamDriver(canbus_number,BH_MODEL,forcetorque,tactile));
     std::cout << "calibration file name: "<<calibration_filename<< std::endl;
@@ -116,61 +114,22 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
         ROS_FATAL("Error during WamDriver::Init(): %s",errmsg);
         exit(1);
     }
-    /*#ifndef BH280_ONLY
-     try {
-       wamdriver->AdvertiseAndSubscribe(n);
-     } catch (int error) {
-       ROS_FATAL("Error during WamDriver::AdvertiseAndSubscribe(); exiting.");
-       delete wamdriver;
-       exit(1);
-     }
-   #endif // BH280_ONLY*/
+
 
 
     bhd=boost::shared_ptr<BHD_280>(new BHD_280(wamdriver->bus));
-
-
-//    /boost::shared_ptr<FT> ft(new FT(wamdriver->bus));
     tact=boost::shared_ptr<Tactile>(new Tactile(wamdriver->bus));
 
 
-
-    //#ifndef OWDSIM
-    /*ros::Timer bhd_timer;
-    if (bhd)
-    {
-        bhd_timer = n.createTimer(ros::Rate(hand_pub_freq).expectedCycleTime(), &BHD_280::Pump, bhd);
-    }
-    ros::Timer ft_timer;
-    if (ft)
-    {
-        ft_timer = n.createTimer(ros::Rate(ft_pub_freq).expectedCycleTime(), &FT::Pump, ft);
-    }
-    ros::Timer tactile_timer;
-    if (tact)
-    {
-        tactile_timer = n.createTimer(ros::Rate(tactile_pub_freq).expectedCycleTime(), &Tactile::Pump, tact);
-    }*/
-    //#endif // OWDSIM
-
-    /*ros::MultiThreadedSpinner s(3);
-    ROS_DEBUG("Spinning");
-    ros::spin(s);
-    ROS_DEBUG("Done spinning; exiting");
-#ifndef OWDSIM
-    while (wamdriver->owam->bus)
-    {
-        usleep(10000);
-    }
-#endif*/
-
     //INITIALIZE
-
-    readHW();
+    readPosition();
+    prev_time=ros::Time::now();
 
     pos_cmd=pos;
-
     pos_cmd_previous=pos_cmd;
+    std::fill(vel.begin(), vel.end(), 0.0);
+    std::fill(eff.begin(), eff.end(), 0.0);
+
 
     return;
 }
@@ -180,13 +139,17 @@ BarrettHandHardwareInterface::~BarrettHandHardwareInterface()
 
 void BarrettHandHardwareInterface::readHW()
 {
-    readPosition();
+    ros::Time curr_time=ros::Time::now();
+    ros::Duration period = curr_time-prev_time;
+    readPositionAndComputeVelocity(period);
+    readTorque();
+    prev_time=curr_time;
 }
 
 void BarrettHandHardwareInterface::writeHW()
 {
     writePosition();
-
+    //writeVelocity();
 }
 
 void BarrettHandHardwareInterface::readPosition()
@@ -196,8 +159,31 @@ void BarrettHandHardwareInterface::readPosition()
                             pos[2],
                             pos[3]);
     pos[4]=pos[3];
-    //std::cout << pos[3] << std::endl;
-    //wamdriver->bus->filtered_forcetorque_data.size();
+
+}
+
+void BarrettHandHardwareInterface::readPositionAndComputeVelocity(ros::Duration &  period)
+{
+    std::vector<double> prev_pos=pos;
+    readPosition();
+    //std::cout << period << std::endl;
+    vel[0]=(pos[0]-prev_pos[0])/period.toSec();
+    vel[1]=(pos[1]-prev_pos[1])/period.toSec();
+    vel[2]=(pos[2]-prev_pos[2])/period.toSec();
+    vel[3]=(pos[3]-prev_pos[3])/period.toSec();
+}
+void BarrettHandHardwareInterface::readTorque()
+{
+    //std::cout << "read torque:" << std::endl;
+
+    //static double ft_values[6];
+    //static double ft_filtered_values[6];
+    //int ft_get_status;
+    //ft_get_status = wamdriver->bus->ft_get_data(ft_values,ft_filtered_values);
+    //std::cout << "ft_get_status:" << ft_get_status<< std::endl;
+    //std::cout << "ft_values:"<<ft_values[0]<< std::endl;
+
+    wamdriver->bus->hand_get_strain(eff[0], eff[1], eff[2]);
 }
 
 void BarrettHandHardwareInterface::writePosition()
@@ -223,12 +209,23 @@ void BarrettHandHardwareInterface::writePosition()
 
 void BarrettHandHardwareInterface::writeVelocity()
 {
+    if(isEqual(vel_cmd_previous[0],vel_cmd[0],0.00001)&&
+       isEqual(vel_cmd_previous[1],vel_cmd[1],0.00001)&&
+       isEqual(vel_cmd_previous[2],vel_cmd[2],0.00001)&&
+       isEqual(vel_cmd_previous[3],vel_cmd[3],0.00001))
+    {
+        vel_cmd_previous=vel_cmd;
+        return;
+    }
+
     std::vector<double> write_cmd;
     write_cmd.push_back(vel_cmd[0]);
     write_cmd.push_back(vel_cmd[1]);
     write_cmd.push_back(vel_cmd[2]);
     write_cmd.push_back(vel_cmd[3]);
     wamdriver->bus->hand_velocity(write_cmd);
+    vel_cmd_previous=vel_cmd;
+
 }
 
 void BarrettHandHardwareInterface::writeEffort()

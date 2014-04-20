@@ -79,14 +79,13 @@ int main(int argc, char** argv)
     {
         exit(-1);
     }
+
     BarrettHandHardwareInterface robot(canbus_number, forcetorque, tactile,  calibration_filename);
     controller_manager::ControllerManager cm(&robot, n);
 
-
-
     ros::Time previous=ros::Time::now();
 
-    ros::Rate rate(1000.0);
+    ros::Rate rate(100.0);
     std::cout << "DONE" << std::endl;
     //#endif // OWDSIM
 
