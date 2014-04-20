@@ -197,6 +197,7 @@ void BarrettHandHardwareInterface::readPosition()
                             pos[3]);
     pos[4]=pos[3];
     //std::cout << pos[3] << std::endl;
+    //wamdriver->bus->filtered_forcetorque_data.size();
 }
 
 void BarrettHandHardwareInterface::writePosition()
