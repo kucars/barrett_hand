@@ -24,13 +24,8 @@
 #include "bhd280.hh"
 
 
-#define PI 3.14159265359
-#define DEG_TO_RAD PI/180.0
-
-bool isEqual(double & a, double & b, double threshold)
-{
-    return fabs(a-b)<threshold;
-}
+//#define PI 3.14159265359
+//#define DEG_TO_RAD PI/180.0
 
 class BarrettHandHardwareInterface : public hardware_interface::RobotHW
 {
@@ -48,7 +43,7 @@ public:
 
 
 private:
-    static const unsigned int joint_number=5;
+    static const unsigned int joint_number=8;
     hardware_interface::JointStateInterface jnt_state_interface;
 
     hardware_interface::PositionJointInterface jnt_pos_interface;

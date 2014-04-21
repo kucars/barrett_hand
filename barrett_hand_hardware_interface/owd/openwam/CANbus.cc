@@ -2192,9 +2192,9 @@ int CANbus::hand_set_property(int32_t id, int32_t prop, int32_t val) {
         return OW_FAILURE;
     }
 #else // ! OWD_RT
-    std::cout << " NOT REAL TIME " << std::endl;
+    //std::cout << " NOT REAL TIME " << std::endl;
     if (!mutex_lock(&hand_queue_mutex)) {
-        std::cout << " new msg " << std::endl;
+        //std::cout << " new msg " << std::endl;
         hand_command_queue.push(msg);
         extra_bus_commands();
         mutex_unlock(&hand_queue_mutex);
@@ -2892,7 +2892,7 @@ int CANbus::hand_move(std::vector<double> p) {
             return OW_FAILURE;
         }
     }
-    std::cout << "worked"<< std::endl;fflush(stdout);
+    //std::cout << "worked"<< std::endl;fflush(stdout);
 
     // Now set the endpoints and issue the move command
     for (int32_t i=0; i<3; ++i) {
@@ -2928,7 +2928,7 @@ int CANbus::hand_move(std::vector<double> p) {
         std::cout << "failed5"<< std::endl;fflush(stdout);
         return OW_FAILURE;
     }
-    std::cout << "got_here1"<< std::endl;fflush(stdout);
+    //std::cout << "got_here1"<< std::endl;fflush(stdout);
     if (squeeze_after_stalling) {
         for (unsigned int i=0; i<4; ++i) {
             // record the fact that once the hand stops, we want to keep
@@ -2942,7 +2942,7 @@ int CANbus::hand_move(std::vector<double> p) {
         handstate[i] = HANDSTATE_MOVING;
         encoder_changed[i] = 6;
     }
-    std::cout << "got here2"<< std::endl;fflush(stdout);
+    //std::cout << "got here2"<< std::endl;fflush(stdout);
     received_state_flags &= ~(0x7800); // clear the four hand bits
     return OW_SUCCESS;
 }

@@ -53,7 +53,7 @@
   <run_depend>roscpp</run_depend>
   <run_depend>actionlib</run_depend>
   <run_depend>actionlib_msgs</run_depend>
-  <run_depend>libpcan</run_depend>
+  <run_depend>libntcan</run_depend>
   <run_depend>libpcan</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>controller_manager</run_depend>

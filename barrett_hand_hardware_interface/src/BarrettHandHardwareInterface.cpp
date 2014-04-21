@@ -1,5 +1,10 @@
 #include <barrett_hand_hardware_interface/BarrettHandHardwareInterface.h>
 
+bool isEqual(double & a, double & b, double threshold)
+{
+    return fabs(a-b)<threshold;
+}
+
 BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_number_, bool & forcetorque_, bool & tactile_,  std::string & calibration_filename_) : n("~"),
     canbus_number(canbus_number_),
     forcetorque(forcetorque_),
@@ -31,6 +36,15 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
 
     hardware_interface::JointStateHandle state_handle_j5("finger_2_prox_joint", &pos[4], &vel[4], &eff[4]);
     jnt_state_interface.registerHandle(state_handle_j5);
+
+    hardware_interface::JointStateHandle state_handle_j6("finger_1_dist_joint", &pos[5], &vel[5], &eff[5]);
+    jnt_state_interface.registerHandle(state_handle_j6);
+
+    hardware_interface::JointStateHandle state_handle_j7("finger_2_dist_joint", &pos[6], &vel[6], &eff[6]);
+    jnt_state_interface.registerHandle(state_handle_j7);
+
+    hardware_interface::JointStateHandle state_handle_j8("finger_3_dist_joint", &pos[7], &vel[7], &eff[7]);
+    jnt_state_interface.registerHandle(state_handle_j8);
 
 
     registerInterface(&jnt_state_interface);
@@ -160,6 +174,11 @@ void BarrettHandHardwareInterface::readPosition()
                             pos[3]);
     pos[4]=pos[3];
 
+    pos[5]=(pos[0])/2.4+0.6;
+    pos[6]=(pos[1])/2.4+0.6;
+    pos[7]=(pos[2])/2.4+0.6;
+
+    //wamdriver->bus->hand_get_outer_links(pos[5],pos[6],pos[7]);
 }
 
 void BarrettHandHardwareInterface::readPositionAndComputeVelocity(ros::Duration &  period)
@@ -167,10 +186,11 @@ void BarrettHandHardwareInterface::readPositionAndComputeVelocity(ros::Duration 
     std::vector<double> prev_pos=pos;
     readPosition();
     //std::cout << period << std::endl;
-    vel[0]=(pos[0]-prev_pos[0])/period.toSec();
-    vel[1]=(pos[1]-prev_pos[1])/period.toSec();
-    vel[2]=(pos[2]-prev_pos[2])/period.toSec();
-    vel[3]=(pos[3]-prev_pos[3])/period.toSec();
+    for(int i=0;i<joint_number;++i)
+    {
+        vel[i]=(pos[i]-prev_pos[i])/period.toSec();
+    }
+
 }
 void BarrettHandHardwareInterface::readTorque()
 {
@@ -188,12 +208,18 @@ void BarrettHandHardwareInterface::readTorque()
 
 void BarrettHandHardwareInterface::writePosition()
 {
-    if(isEqual(pos_cmd_previous[0],pos_cmd[0],0.00001)&&
-       isEqual(pos_cmd_previous[1],pos_cmd[1],0.00001)&&
-       isEqual(pos_cmd_previous[2],pos_cmd[2],0.00001)&&
-       isEqual(pos_cmd_previous[3],pos_cmd[3],0.00001))
+    bool new_command=false;
+    for(int i=0; i<joint_number;++i)
     {
-        pos_cmd_previous=pos_cmd;
+        if(!isEqual(pos_cmd_previous[i],pos_cmd[i],0.00001))
+        {
+                new_command=true;
+                break;
+        }
+    }
+    if(!new_command)
+    {
+        //pos_cmd_previous=pos_cmd;
         return;
     }
 
@@ -202,19 +228,24 @@ void BarrettHandHardwareInterface::writePosition()
     write_cmd.push_back(pos_cmd[1]);
     write_cmd.push_back(pos_cmd[2]);
     write_cmd.push_back(pos_cmd[3]);
-
     wamdriver->bus->hand_move(write_cmd);
     pos_cmd_previous=pos_cmd;
 }
 
 void BarrettHandHardwareInterface::writeVelocity()
 {
-    if(isEqual(vel_cmd_previous[0],vel_cmd[0],0.00001)&&
-       isEqual(vel_cmd_previous[1],vel_cmd[1],0.00001)&&
-       isEqual(vel_cmd_previous[2],vel_cmd[2],0.00001)&&
-       isEqual(vel_cmd_previous[3],vel_cmd[3],0.00001))
+    bool new_command=false;
+    for(int i=0; i<joint_number;++i)
     {
-        vel_cmd_previous=vel_cmd;
+        if(!isEqual(vel_cmd_previous[i],vel_cmd[i],0.00001))
+        {
+                new_command=true;
+                break;
+        }
+    }
+    if(!new_command)
+    {
+//        vel_cmd_previous=vel_cmd;
         return;
     }
 
@@ -225,7 +256,6 @@ void BarrettHandHardwareInterface::writeVelocity()
     write_cmd.push_back(vel_cmd[3]);
     wamdriver->bus->hand_velocity(write_cmd);
     vel_cmd_previous=vel_cmd;
-
 }
 
 void BarrettHandHardwareInterface::writeEffort()
