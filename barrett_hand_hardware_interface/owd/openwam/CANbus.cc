@@ -3118,6 +3118,8 @@ int CANbus::hand_get_positions(double &p1, double &p2, double &p3, double &p4) {
     p3 = finger_encoder_to_radians(hand_positions[3]);
     p4 = spread_encoder_to_radians(hand_positions[4]);
 
+    std::cout << "p1:"<<finger_encoder_to_radians(hand_positions[1])<< std::endl;
+
     return OW_SUCCESS;
 }
 
