@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot>
+  <!-- base_link -->
+  <gazebo reference="barrett_base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_1_prox_link -->
+  <gazebo reference="finger_1_prox_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_1_med_link -->
+  <gazebo reference="finger_1_med_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- finger_1_dist_link -->
+  <gazebo reference="finger_1_dist_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_2_prox_link -->
+  <gazebo reference="finger_2_prox_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_2_med_link -->
+  <gazebo reference="finger_2_med_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- finger_2_dist_link -->
+  <gazebo reference="finger_2_dist_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_3_med_link -->
+  <gazebo reference="finger_3_med_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- finger_3_dist_link -->
+  <gazebo reference="finger_3_dist_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+</robot>

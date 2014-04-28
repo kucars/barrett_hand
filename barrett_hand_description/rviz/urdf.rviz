@@ -60,51 +60,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        barrett_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_1_dist_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_1_med_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_1_prox_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_2_dist_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_2_med_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_2_prox_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_3_dist_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        finger_3_med_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -156,10 +111,10 @@ Visualization Manager:
         Z: 0.0205746
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.1104
+      Pitch: 0.3104
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.22857
+      Yaw: 6.13357
     Saved: ~
 Window Geometry:
   Displays:
