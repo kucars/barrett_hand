@@ -2,12 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <link name="barrett_base_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -29,12 +26,9 @@
   </link>
   <link name="finger_1_prox_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -75,19 +69,16 @@
     <limit
       lower="0.0"
       upper="3.141"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_1_med_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -128,19 +119,16 @@
     <limit
       lower="0"
       upper="2.44"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_1_dist_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -181,19 +169,16 @@
     <limit
       lower="0.6"
       upper="1.57"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_2_prox_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -234,19 +219,16 @@
     <limit
       lower="0"
       upper="3.141"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_2_med_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -287,19 +269,16 @@
     <limit
       lower="0.0"
       upper="2.44"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_2_dist_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
       <origin
@@ -340,19 +319,16 @@
     <limit
       lower="0.6"
       upper="1.57"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_3_med_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="-0.05 0 0" rpy="0 0 0"/>
+      <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
     </inertial>
     <visual>
       <origin
@@ -393,19 +369,16 @@
     <limit
       lower="0.0"
       upper="2.44"
-      effort="0"
+      effort="10000"
       velocity="0.01" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="1.0" friction="1000.0" />
   </joint>
   <link
     name="finger_3_dist_link">
     <inertial>
-      <origin xyz="0 0 1" rpy="0 0 0"/>
-      <mass value="0.0001"/>
-      <inertia 
-        ixx="1.0" ixy="0.0" ixz="0.0" 
-        iyy="1.0" iyz="0.0" 
-        izz="1.0"/>
+      <mass value="0.1" />
+      <origin xyz="-0.04 0 0" rpy="0 0 0"/>
+      <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
     </inertial>
     <visual>
       <origin
@@ -446,9 +419,9 @@
     <limit
       lower="0.6"
       upper="1.57"
-      effort="0"
+      effort="10000"
       velocity="0" />
-   <dynamics damping="0.0" friction="0.0" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
 
 
