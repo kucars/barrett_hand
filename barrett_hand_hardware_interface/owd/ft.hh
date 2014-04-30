@@ -27,30 +27,32 @@
 #include <owd_msgs/Reset.h>
 #include <owd_msgs/ForceState.h>
 
-class FT {
+class FT
+{
 public:
-  ros::Publisher pub_ft, pub_filtered_ft, pub_accel, pub_ft_state;
-  ros::ServiceServer ss_tare;
-  CANbus *bus;
+    ros::Publisher pub_ft, pub_filtered_ft, pub_accel, pub_ft_state;
+    ros::ServiceServer ss_tare;
+    CANbus *bus;
 
-  ros::NodeHandle node;
-  geometry_msgs::WrenchStamped ft_vals;
-  geometry_msgs::Vector3 accel_vals;
-  owd_msgs::ForceState ft_state;
+    ros::NodeHandle node;
+    geometry_msgs::WrenchStamped ft_vals;
+    geometry_msgs::Vector3 accel_vals;
+    owd_msgs::ForceState ft_state;
 
-  bool valid_data;
+    bool valid_data;
 
-  FT(CANbus *cb);
-  ~FT();
-  void Pump(const ros::TimerEvent& e);
-  bool Publish();
-  bool Tare(owd_msgs::Reset::Request &req,
-	    owd_msgs::Reset::Response &res);
-  
+    FT();
+    FT(CANbus *cb);
+    ~FT();
+    void Pump(const ros::TimerEvent& e);
+    bool Publish();
+    bool Tare(owd_msgs::Reset::Request &req,
+              owd_msgs::Reset::Response &res);
+
 private:
-  void AdvertiseAndSubscribe(ros::NodeHandle &n);
-  void Unadvertise();
+    void AdvertiseAndSubscribe(ros::NodeHandle &n);
+    void Unadvertise();
 };
-  
+
 
 

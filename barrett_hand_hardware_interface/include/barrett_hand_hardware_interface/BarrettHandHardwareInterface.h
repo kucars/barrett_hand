@@ -19,25 +19,39 @@
 #include "openwam/CANbus.hh"
 
 #include "openwamdriver.h"
-//#include "ft.hh"
+#include "ft.hh"
 #include "tactile.hh"
 #include "bhd280.hh"
+#include <sensor_msgs/PointCloud2.h>
+#include <pcl/PCLPointCloud2.h>
+//#include <pcl_conversions/pcl_conversions.h>
+#include <pcl/common/common.h>
+#include <pcl_ros/point_cloud.h>
+#include <pcl/point_types.h>
 
-
-//#define PI 3.14159265359
-//#define DEG_TO_RAD PI/180.0
+#define PI_ 3.14159265359
+#define DEG_TO_RAD PI/180.0
 
 class BarrettHandHardwareInterface : public hardware_interface::RobotHW
 {
 public:
-    BarrettHandHardwareInterface(const int & canbus_number_, bool & forcetorque_, bool & tactile_,  std::string & calibration_filename_);
+    BarrettHandHardwareInterface(const int & canbus_number_, bool & forcetorque_, bool & tactile_,  std::string & calibration_filename_, double & ft_pub_freq, double & tactile_pub_freq);
+    BarrettHandHardwareInterface()
+    {};
+
+    bool init();
+
+    bool init(hardware_interface::JointStateInterface &jnt_state_interface_,
+              hardware_interface::PositionJointInterface &jnt_pos_interface_,
+              hardware_interface::VelocityJointInterface &jnt_vel_interface_,
+              hardware_interface::EffortJointInterface &jnt_eff_interface_
+              );
+
+
     ~BarrettHandHardwareInterface();
     void readHW();
     void writeHW();
-    void readTactile()
-    {
-        //bus->tactile_get_data
-    }
+
 
     boost::shared_ptr<OWD::WamDriver> wamdriver;
 
@@ -50,7 +64,6 @@ private:
     hardware_interface::VelocityJointInterface jnt_vel_interface;
     hardware_interface::EffortJointInterface jnt_eff_interface;
 
-
     std::vector<double> pos;
     std::vector<double> vel;
     std::vector<double> eff;
@@ -61,22 +74,21 @@ private:
     std::vector<double> vel_cmd_previous;
     std::vector<double> eff_cmd_previous;
 
-
     void readPosition();
     void readTorque();
-    void readPositionAndComputeVelocity(ros::Duration &  period);
+    void readPositionAndComputeVelocity();
 
     void writePosition();
     void writeVelocity();
     void writeEffort();
 
-
+    bool ftPublish(const ros::TimerEvent& e);
+    void tactilePublish(const ros::TimerEvent& e);
 
     ros::NodeHandle n;
     ros::Time prev_time;
 
     boost::shared_ptr<BHD_280> bhd;
-//    boost::shared_ptr<FT> ft;
     boost::shared_ptr<Tactile> tact;
 
     // OWD parameters
@@ -84,12 +96,27 @@ private:
     int canbus_number;
     std::string hand_type;
     bool forcetorque;
-    int pub_freq;  // DEPRECATED
-    int wam_pub_freq;
-    int hand_pub_freq;
-    int ft_pub_freq;
-    int tactile_pub_freq;
+    int ft_pub_freq_;
+    int tactile_pub_freq_;
     bool tactile;
+
+    ros::Publisher pub_tactile;
+    ros::Publisher pub_ft;
+    ros::Publisher pub_filtered_ft;
+    ros::Publisher pub_ft_state;
+    ros::Publisher pub_accel;
+
+    ros::Timer tactile_timer;
+
+    owd_msgs::BHTactile tactile_msg;
+    owd_msgs::ForceState ft_state;
+
+    geometry_msgs::WrenchStamped ft_vals;
+    geometry_msgs::Vector3 accel_vals;
+
+    //sensor_msgs::PointCloud2 finger_1_contacts;
+    pcl::PointCloud<pcl::PointXYZRGBL>::Ptr tactile_cloud;
+    ros::Publisher pub_tactile_pcl;
 
 };
 

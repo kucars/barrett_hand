@@ -96,7 +96,9 @@ WamDriver::WamDriver(int canbus_number, int bh_model, bool forcetorque, bool tac
   bus=new CANbus(canbus_number, Joint::Jn, bh_model==280, forcetorque, tactile, log_canbus_data);
 #else
 std::cout << "canbus_number:" << canbus_number << " bh model:"  << bh_model << " force torque:" << forcetorque << " tactile:" << tactile << std::endl;
-  bus=new CANbus(canbus_number, 0, bh_model==280, forcetorque, tactile, log_canbus_data);
+
+std::cout << "tactile"<< tactile <<std::endl;
+bus=new CANbus(canbus_number, 0, bh_model==280, forcetorque, tactile, log_canbus_data);
 #endif // BH280_ONLY
 
   

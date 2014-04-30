@@ -18,8 +18,8 @@ int main(int argc, char** argv)
     int pub_freq;  // DEPRECATED
     int wam_pub_freq;
     int hand_pub_freq;
-    int ft_pub_freq;
-    int tactile_pub_freq;
+    double ft_pub_freq;
+    double tactile_pub_freq;
     n_priv.param("calibration_file",calibration_filename,std::string("wam_joint_calibrations"));
     n_priv.param("canbus_number",canbus_number,32);
     n_priv.param("hand_type",hand_type,std::string("280+TACT"));
@@ -38,8 +38,8 @@ int main(int argc, char** argv)
     }
     n_priv.param("wam_publish_frequency",wam_pub_freq,wam_freq_default);
     n_priv.param("hand_publish_frequency",hand_pub_freq,40);
-    n_priv.param("ft_publish_frequency",ft_pub_freq,10);
-    n_priv.param("tactile_publish_frequency",tactile_pub_freq,10);
+    n_priv.param("ft_publish_frequency",ft_pub_freq,50.0);
+    n_priv.param("tactile_publish_frequency",tactile_pub_freq,50.0);
 
     if (wam_pub_freq > 500)
     {
@@ -79,8 +79,10 @@ int main(int argc, char** argv)
     {
         exit(-1);
     }
+    forcetorque=false;
+    tactile=true;
 
-    BarrettHandHardwareInterface robot(canbus_number, forcetorque, tactile,  calibration_filename);
+    BarrettHandHardwareInterface robot(canbus_number, forcetorque, tactile,  calibration_filename, ft_pub_freq, tactile_pub_freq);
     controller_manager::ControllerManager cm(&robot, n);
 
     ros::Time previous=ros::Time::now();
