@@ -26,39 +26,41 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
     eff_cmd_previous.resize(joint_number);
 
 
-    tactile_cloud=pcl::PointCloud<pcl::PointXYZRGBL>::Ptr (new pcl::PointCloud<pcl::PointXYZRGBL>);
+    finger_1_cloud=pcl::PointCloud<pcl::PointXYZI>::Ptr (new pcl::PointCloud<pcl::PointXYZI>);
+    finger_2_cloud=pcl::PointCloud<pcl::PointXYZI>::Ptr (new pcl::PointCloud<pcl::PointXYZI>);
+    finger_3_cloud=pcl::PointCloud<pcl::PointXYZI>::Ptr (new pcl::PointCloud<pcl::PointXYZI>);
 
 
+    finger_1_cloud->points.resize(24);
+    finger_2_cloud->points.resize(24);
+    finger_3_cloud->points.resize(24);
 
-    tactile_cloud->points.resize(96);
-    for(int f=0; f<4; ++f)
+    double x_offset=-0.021;
+    double y_offset=-0.012;
+    double z_offset=-0.005;
+
+
+    double x_spacing=0.005;
+    double z_spacing=0.005;
+    for(int i=0; i<8; ++i)
     {
-        switch(f)
+        for(int j=0; j<3; ++j)
         {
-        case 0:
-            tactile_cloud->header.frame_id="finger1";
-            break;
-        case 1:
-            tactile_cloud->header.frame_id="finger2";
-            break;
-        case 2:
-            tactile_cloud->header.frame_id="finger3";
-            break;
-        case 3:
-            tactile_cloud->header.frame_id="palm";
-            break;
-        }
+            finger_1_cloud->points[j+i*3].x=x_offset-i*x_spacing;
+            finger_1_cloud->points[j+i*3].y=y_offset;
+            finger_1_cloud->points[j+i*3].z=z_offset+j*z_spacing;
 
-        for(int i=0; i<8; ++i)
-        {
-            for(int j=0; j<3; ++j)
-            {
-                tactile_cloud->points[j+i*3+f*3*8].x=0.0+i*0.003;
-                tactile_cloud->points[j+i*3+f*3*8].y=0.0+j*0.003;
-                tactile_cloud->points[j+i*3+f*3*8].z=0.0;
-            }
+            finger_2_cloud->points[j+i*3].x=x_offset-i*x_spacing;
+            finger_2_cloud->points[j+i*3].y=y_offset;
+            finger_2_cloud->points[j+i*3].z=z_offset+j*z_spacing;
+
+            finger_3_cloud->points[j+i*3].x=x_offset-i*x_spacing;
+            finger_3_cloud->points[j+i*3].y=y_offset;
+            finger_3_cloud->points[j+i*3].z=z_offset+j*z_spacing;
         }
     }
+
+
 
 
     int BH_MODEL=280;
@@ -106,6 +108,11 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
     tactile_msg.palm.resize(24);
     pub_tactile=n.advertise<owd_msgs::BHTactile>("tactile",10);
     pub_tactile_pcl=n.advertise<sensor_msgs::PointCloud2>("point_cloud",10);
+
+    pub_tactile_finger_1_pcl=n.advertise<sensor_msgs::PointCloud2>("finger_1",10);
+    pub_tactile_finger_2_pcl=n.advertise<sensor_msgs::PointCloud2>("finger_2",10);
+    pub_tactile_finger_3_pcl=n.advertise<sensor_msgs::PointCloud2>("finger_3",10);
+
     //pub_ft = n.advertise<geometry_msgs::WrenchStamped>("forcetorque", 1);
     //pub_ft_state = n.advertise<owd_msgs::ForceState>("forcetorque_state", 1);
     //pub_filtered_ft = n.advertise<geometry_msgs::WrenchStamped>("filtered_forcetorque", 1);
@@ -425,16 +432,15 @@ void BarrettHandHardwareInterface::tactilePublish(const ros::TimerEvent& e)
         switch(f)
         {
         case 0:
-            tactile_cloud->header.frame_id="finger_1_dist_link";
+            finger_1_cloud->header.frame_id="finger_1_dist_link";
             break;
         case 1:
-            tactile_cloud->header.frame_id="finger_2_dist_link";
+            finger_2_cloud->header.frame_id="finger_2_dist_link";
             break;
         case 2:
-            tactile_cloud->header.frame_id="finger_3_dist_link";
+            finger_3_cloud->header.frame_id="finger_3_dist_link";
             break;
         case 3:
-            tactile_cloud->header.frame_id="barrett_base_link";
             break;
         }
 
@@ -442,14 +448,51 @@ void BarrettHandHardwareInterface::tactilePublish(const ros::TimerEvent& e)
         {
             for(int j=0; j<3; ++j)
             {
-                tactile_cloud->points[j+i*3+f*3*8].r=0.0;
-                tactile_cloud->points[j+i*3+f*3*8].g=0.0;
-                tactile_cloud->points[j+i*3+f*3*8].b=0.0;
-                tactile_cloud->points[j+i*3+f*3*8].label=f;
+                switch(f)
+                {
+                case 0:
+                    if(tactile_msg.finger1[j+i*3]<2.5)
+                    {
+                        finger_1_cloud->points[j+i*3].intensity=0.0;
+                    }
+                    else
+                    {
+                        finger_1_cloud->points[j+i*3].intensity=255*tactile_msg.finger1[j+i*3]/18.0;
+                    }
+                    break;
+                case 1:
+                    if(tactile_msg.finger2[j+i*3]<2.5)
+                    {
+                        finger_2_cloud->points[j+i*3].intensity=0.0;
+                    }
+                    else
+                    {
+                        finger_2_cloud->points[j+i*3].intensity=255*tactile_msg.finger2[j+i*3]/18.0;
+                    }
+                    break;
+                case 2:
+                    if(tactile_msg.finger3[j+i*3]<2.5)
+                    {
+                        finger_3_cloud->points[j+i*3].intensity=0.0;
+                    }
+                    else
+                    {
+                        finger_3_cloud->points[j+i*3].intensity=255*tactile_msg.finger3[j+i*3]/18.0;
+                    }
+                    break;
+                case 3:
+                    break;
+                }
             }
         }
     }
-    pub_tactile_pcl.publish(*tactile_cloud);
+
+    std::cout << std::endl;
+
+    pub_tactile_finger_1_pcl.publish(*finger_1_cloud);
+    pub_tactile_finger_2_pcl.publish(*finger_2_cloud);
+    pub_tactile_finger_3_pcl.publish(*finger_3_cloud);
+
 }
 
 
@@ -552,13 +595,11 @@ void BarrettHandHardwareInterface::writeVelocity()
         }
     }
     std::cout << std::endl;
-    //std::cout << "GOT HERE"<< << std::endl;
     if(!new_command)
     {
         //        vel_cmd_previous=vel_cmd;
         return;
     }
-    std::cout << "GOT HERE2"<< std::endl;
     exit(-1);
     std::vector<double> write_cmd;
     write_cmd.push_back(vel_cmd[0]);

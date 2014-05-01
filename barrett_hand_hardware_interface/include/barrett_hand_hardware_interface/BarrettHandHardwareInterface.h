@@ -115,7 +115,17 @@ private:
     geometry_msgs::Vector3 accel_vals;
 
     //sensor_msgs::PointCloud2 finger_1_contacts;
-    pcl::PointCloud<pcl::PointXYZRGBL>::Ptr tactile_cloud;
+    pcl::PointCloud<pcl::PointXYZI>::Ptr finger_1_cloud;
+    ros::Publisher pub_tactile_finger_1_pcl;
+
+    pcl::PointCloud<pcl::PointXYZI>::Ptr finger_2_cloud;
+    ros::Publisher pub_tactile_finger_2_pcl;
+
+    pcl::PointCloud<pcl::PointXYZI>::Ptr finger_3_cloud;
+    ros::Publisher pub_tactile_finger_3_pcl;
+
+
+    pcl::PointCloud<pcl::PointXYZI>::Ptr tactile_cloud;
     ros::Publisher pub_tactile_pcl;
 
 };
