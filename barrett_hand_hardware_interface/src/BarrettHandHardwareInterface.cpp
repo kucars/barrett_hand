@@ -487,8 +487,6 @@ void BarrettHandHardwareInterface::tactilePublish(const ros::TimerEvent& e)
         }
     }
 
-    std::cout << std::endl;
-
     pub_tactile_finger_1_pcl.publish(*finger_1_cloud);
     pub_tactile_finger_2_pcl.publish(*finger_2_cloud);
     pub_tactile_finger_3_pcl.publish(*finger_3_cloud);
