@@ -27,26 +27,54 @@ barrett_hand:
     pid: {p: 1.0, i: 0.0, d: 0.0}
 
   # Velocity Controllers ---------------------------------------
+#  joint1_velocity_controller:
+#    type: velocity_controllers/JointVelocityController
+#    joint: finger_1_med_joint
+#    pid: {p: 1.0, i: 0.0, d: 0.0}
+#  joint2_velocity_controller:
+#    type: velocity_controllers/JointVelocityController
+#    joint: finger_2_med_joint
+#    pid: {p: 1.0, i: 0.0, d: 0.0}
+#  joint3_velocity_controller:
+#    type: velocity_controllers/JointVelocityController
+#    joint: finger_3_med_joint
+#    pid: {p: 1.0, i: 0.0, d: 0.0}
+#  joint4_velocity_controller:
+#    type: velocity_controllers/JointVelocityController
+#    joint: finger_1_prox_joint
+#    pid: {p: 1.0, i: 0.0, d: 0.0}
+#  joint5_velocity_controller:
+#    type: velocity_controllers/JointVelocityController
+#    joint: finger_2_prox_joint
+#    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  # Velocity Controllers ---------------------------------------
   joint1_velocity_controller:
-    type: velocity_controllers/JointVelocityController
+    type: barrett_hand_controllers/JointVelocityController
     joint: finger_1_med_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+    effort_threshold: 700
   joint2_velocity_controller:
-    type: velocity_controllers/JointVelocityController
+    type: barrett_hand_controllers/JointVelocityController
     joint: finger_2_med_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+    effort_threshold: 700
   joint3_velocity_controller:
-    type: velocity_controllers/JointVelocityController
+    type: barrett_hand_controllers/JointVelocityController
     joint: finger_3_med_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+    effort_threshold: 700
   joint4_velocity_controller:
-    type: velocity_controllers/JointVelocityController
+    type: barrett_hand_controllers/JointVelocityController
     joint: finger_1_prox_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+    effort_threshold: 700
   joint5_velocity_controller:
-    type: velocity_controllers/JointVelocityController
+    type: barrett_hand_controllers/JointVelocityController
     joint: finger_2_prox_joint
     pid: {p: 1.0, i: 0.0, d: 0.0}
+    effort_threshold: 700
+
 
   # Trajectory Controllers ---------------------------------------
   barrett_hand_trajectory_controller:

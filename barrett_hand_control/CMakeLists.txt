@@ -11,8 +11,13 @@ find_package(catkin REQUIRED COMPONENTS
 
 
 
-#include_directories(include owd ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS})
 
+add_library(barrett_hand_controllers
+    src/joint_velocity_controller_tactile.cpp
+  )
+
+target_link_libraries(barrett_hand_controllers ${catkin_LIBRARIES})
 #add_executable(barrett_interface src/BarrettInterface.cpp)
 #target_link_libraries(
 #  barrett_interface

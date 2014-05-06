@@ -2150,7 +2150,6 @@ int CANbus::ft_tare() {
 
 int CANbus::tactile_get_data(float *f1, float *f2, float *f3, float *palm) {
 
-    std::cout << "tactile_data:" << tactile_data << " valid_tactile_data:"<< valid_tactile_data << std::endl;
     if (tactile_data && valid_tactile_data) {
         if (f1) {
             memcpy(f1,tactile_data,24*sizeof(float));
@@ -3117,8 +3116,6 @@ int CANbus::hand_get_positions(double &p1, double &p2, double &p3, double &p4) {
     p2 = finger_encoder_to_radians(hand_positions[2]);
     p3 = finger_encoder_to_radians(hand_positions[3]);
     p4 = spread_encoder_to_radians(hand_positions[4]);
-
-    std::cout << "p1:"<<finger_encoder_to_radians(hand_positions[1])<< std::endl;
 
     return OW_SUCCESS;
 }

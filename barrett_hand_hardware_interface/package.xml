@@ -49,6 +49,9 @@
   <build_depend>libntcan</build_depend>
   <build_depend>libpcan</build_depend>
   <build_depend>tf</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
   <run_depend>owd_msgs</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>actionlib</run_depend>
@@ -58,7 +61,8 @@
   <run_depend>tf</run_depend>
   <run_depend>controller_manager</run_depend>
   <run_depend>hardware_interface</run_depend>
-
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>sensor_msgs</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
