@@ -37,9 +37,9 @@ catkin_package(
 add_definitions("-O0 -ggdb3 -DWRIST -DBH8")
 
 add_library(barrett_hand_hardware_interface src/BarrettHandHardwareInterface.cpp owd/openwamdriver.cpp owd/bhd280.cc owd/ft.cc owd/tactile.cc)
-#add_executable(barrett_hand_hardware_interface_node src/Robot.cpp)
+add_executable(barrett_hand_hardware_interface_node src/Robot.cpp)
 #add_definitions("-BH280_ONLY -DBH280 -DBH280_ONLY ${CANBUS_DEFS}")
-#target_link_libraries(barrett_hand_hardware_interface_node   barrett_hand_hardware_interface bhdcan openwam openmath lapack blas gfortran ${CANBUS_LIBS} ${catkin_LIBRARIES})
+target_link_libraries(barrett_hand_hardware_interface_node   barrett_hand_hardware_interface bhdcan openwam openmath lapack blas gfortran ${CANBUS_LIBS} ${catkin_LIBRARIES})
 
 
 

@@ -121,7 +121,8 @@ BarrettHandHardwareInterface::BarrettHandHardwareInterface(const int & canbus_nu
     tactile_timer = n.createTimer(ros::Rate(tactile_pub_freq_).expectedCycleTime(), &BarrettHandHardwareInterface::tactilePublish, this);
 
 
-    //init();
+
+    init();
     return;
 }
 
