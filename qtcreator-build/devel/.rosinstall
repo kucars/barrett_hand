@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/devel/setup.sh

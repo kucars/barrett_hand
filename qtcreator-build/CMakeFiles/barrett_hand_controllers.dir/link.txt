@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC    -shared -Wl,-soname,libbarrett_hand_controllers.so -o libbarrett_hand_controllers.so CMakeFiles/barrett_hand_controllers.dir/src/joint_velocity_controller_tactile.cpp.o 
