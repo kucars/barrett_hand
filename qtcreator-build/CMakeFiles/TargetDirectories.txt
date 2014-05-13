@@ -1,8 +1,0 @@
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/_catkin_empty_exported_target.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/barrett_hand_controllers.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/clean_test_results.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/doxygen.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/gtest/CMakeFiles/gtest.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/gtest/CMakeFiles/gtest_main.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/run_tests.dir
-/home/rui/catkin_ws/src/ros-kuri-pkg/barrett_hand/qtcreator-build/CMakeFiles/tests.dir
