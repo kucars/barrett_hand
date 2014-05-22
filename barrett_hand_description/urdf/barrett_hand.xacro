@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <property name="dist_joint_offset" value="0.75" />
+  <property name="dist_joint_multiplier" value="0.3" />
   <link name="barrett_base_link">
     <inertial>
       <mass value="0.1" />
@@ -172,6 +175,7 @@
       effort="10000"
       velocity="0.01" />
    <dynamics damping="10.0" friction="10.0" />
+   <mimic joint="finger_1_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
   <link
     name="finger_2_prox_link">
@@ -322,6 +326,7 @@
       effort="10000"
       velocity="0.01" />
    <dynamics damping="10.0" friction="10.0" />
+   <mimic joint="finger_2_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
   <link
     name="finger_3_med_link">
@@ -422,6 +427,7 @@
       effort="10000"
       velocity="0" />
    <dynamics damping="10.0" friction="10.0" />
+   <mimic joint="finger_3_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
 
 
