@@ -27,6 +27,15 @@
       </geometry>
     </collision>
   </link>
+  <joint name="palm_joint" type="fixed"> <!--original is revolute-->
+    <origin xyz="0.0 0.0 0.077"/>
+    <parent link="barrett_base_link" />
+    <child link="palm_frame" />
+  </joint>
+
+  <link name="palm_frame">
+  </link>
+
   <link name="finger_1_prox_link">
     <inertial>
       <mass value="0.1" />
@@ -57,23 +66,12 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="finger_1_prox_joint"
-    type="revolute">
-    <origin
-      xyz="0.025 0 0.0415"
-      rpy="0 2.7051E-17 -1.5708" />
-    <parent
-      link="barrett_base_link" />
-    <child
-      link="finger_1_prox_link" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="0.0"
-      upper="3.141"
-      effort="10000"
-      velocity="0.01" />
+  <joint name="finger_1_prox_joint" type="revolute">
+    <origin xyz="0.025 0 0.0415" rpy="0 2.7051E-17 -1.5708" />
+    <parent link="barrett_base_link" />
+    <child link="finger_1_prox_link" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0.0" upper="3.141" effort="10000" velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
@@ -110,20 +108,11 @@
   <joint
     name="finger_1_med_joint"
     type="revolute">
-    <origin
-      xyz="-0.05 0 0.0339"
-      rpy="-1.5708 -8.8281E-17 0" />
-    <parent
-      link="finger_1_prox_link" />
-    <child
-      link="finger_1_med_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="0"
-      upper="2.44"
-      effort="10000"
-      velocity="0.01" />
+    <origin xyz="-0.05 0 0.0339" rpy="-1.5708 -8.8281E-17 0" />
+    <parent link="finger_1_prox_link" />
+    <child link="finger_1_med_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="2.44" effort="10000" velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
@@ -134,46 +123,27 @@
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="3.14159265359 0 -0.73" />
+      <origin xyz="0 0 0" rpy="3.14159265359 0 -0.73" />
       <geometry>
-        <mesh
-          filename="package://barrett_hand_description/meshes/finger_1_dist_link.STL" />
+        <mesh filename="package://barrett_hand_description/meshes/finger_1_dist_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="3.14159265359 0 -0.73" />
+      <origin xyz="0 0 0" rpy="3.14159265359 0 -0.73" />
       <geometry>
-        <mesh
-          filename="package://barrett_hand_description/meshes/finger_1_dist_link.STL" />
+        <mesh filename="package://barrett_hand_description/meshes/finger_1_dist_link.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="finger_1_dist_joint"
-    type="revolute"> <!--original is revolute-->
-    <origin
-      xyz="-0.069936 -0.003 0"
-      rpy="1.6787E-18 -3.6382E-15 -6.1073E-33" />
-    <parent
-      link="finger_1_med_link" />
-    <child
-      link="finger_1_dist_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="0.6"
-      upper="1.57"
-      effort="10000"
-      velocity="0.01" />
+  <joint name="finger_1_dist_joint" type="revolute"> <!--original is revolute-->
+    <origin xyz="-0.069936 -0.003 0" rpy="1.6787E-18 -3.6382E-15 -6.1073E-33" />
+    <parent link="finger_1_med_link" />
+    <child link="finger_1_dist_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0.6" upper="1.57" effort="10000" velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
    <mimic joint="finger_1_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
@@ -185,46 +155,27 @@
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://barrett_hand_description/meshes/finger_2_prox_link.STL" />
+        <mesh filename="package://barrett_hand_description/meshes/finger_2_prox_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://barrett_hand_description/meshes/finger_2_prox_link.STL" />
+        <mesh filename="package://barrett_hand_description/meshes/finger_2_prox_link.STL" />
       </geometry>
     </collision>
   </link>
-  <joint
-    name="finger_2_prox_joint"
-    type="revolute">
-    <origin
-      xyz="-0.025 0 0.0415"
-      rpy="0 2.7051E-17 -1.5708" />
-    <parent
-      link="barrett_base_link" />
-    <child
-      link="finger_2_prox_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="0"
-      upper="3.141"
-      effort="10000"
-      velocity="0.01" />
+  <joint name="finger_2_prox_joint" type="revolute">
+    <origin xyz="-0.025 0 0.0415" rpy="0 2.7051E-17 -1.5708" />
+    <parent link="barrett_base_link" />
+    <child link="finger_2_prox_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="3.141" effort="10000"  velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
@@ -261,20 +212,11 @@
   <joint
     name="finger_2_med_joint"
     type="revolute">
-    <origin
-      xyz="-0.05 0 0.0339"
-      rpy="-1.5708 -8.8281E-17 0" />
-    <parent
-      link="finger_2_prox_link" />
-    <child
-      link="finger_2_med_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="0.0"
-      upper="2.44"
-      effort="10000"
-      velocity="0.01" />
+    <origin xyz="-0.05 0 0.0339" rpy="-1.5708 -8.8281E-17 0" />
+    <parent link="finger_2_prox_link" />
+    <child link="finger_2_med_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0.0" upper="2.44" effort="10000" velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
@@ -285,17 +227,12 @@
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="3.14159265359 0 -0.73" />
+      <origin xyz="0 0 0" rpy="3.14159265359 0 -0.73" />
       <geometry>
-        <mesh
-          filename="package://barrett_hand_description/meshes/finger_2_dist_link.STL" />
+        <mesh filename="package://barrett_hand_description/meshes/finger_2_dist_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
     <collision>
@@ -324,7 +261,7 @@
       lower="0.6"
       upper="1.57"
       effort="10000"
-      velocity="0.01" />
+      velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
    <mimic joint="finger_2_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
@@ -375,8 +312,8 @@
       lower="0.0"
       upper="2.44"
       effort="10000"
-      velocity="0.01" />
-   <dynamics damping="1.0" friction="1000.0" />
+      velocity="0.2" />
+   <dynamics damping="10.0" friction="10.0" />
   </joint>
   <link
     name="finger_3_dist_link">
@@ -425,7 +362,7 @@
       lower="0.6"
       upper="1.57"
       effort="10000"
-      velocity="0" />
+      velocity="0.2" />
    <dynamics damping="10.0" friction="10.0" />
    <mimic joint="finger_3_med_joint" multiplier="${dist_joint_multiplier}" offset="${dist_joint_offset}"/>
   </joint>
@@ -446,7 +383,7 @@
     <joint name="finger_1_dist_joint"/>
     <actuator name="motor12">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>10</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 

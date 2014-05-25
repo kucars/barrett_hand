@@ -14,7 +14,7 @@
 
   <property name="finger_tip_mu"              value="500.0" />
   <property name="finger_mu"                  value="500.0" />
-
+  <property name="dist_joint_multiplier" value="0.3" />
   <!-- base_link -->
   <gazebo reference="barrett_base_link">
     <material>Gazebo/Orange</material>
@@ -145,4 +145,28 @@
         <palm_link>barrett_base_link</palm_link>
       </gripper>
     </gazebo>
+
+
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_1_med_joint</joint>
+            <mimicJoint>finger_1_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_2_med_joint</joint>
+            <mimicJoint>finger_2_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_3_med_joint</joint>
+            <mimicJoint>finger_3_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+
 </robot>
