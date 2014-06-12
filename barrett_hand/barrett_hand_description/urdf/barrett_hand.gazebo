@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<robot>
+  <property name="finger_stop_kd"             value="1.0" />
+  <property name="finger_stop_kp"             value="10000000.0" />
+  <property name="finger_fudge_factor"        value="1.0" />
+
+  <property name="finger_kp"                  value="0.0" />
+  <property name="finger_kd"                  value="0.0" />
+  <property name="finger_fm"                  value="0.0" />
+
+  <property name="finger_tip_kp"              value="0.0" />
+  <property name="finger_tip_kd"              value="0.0" />
+  <property name="finger_tip_fm"              value="0.0" />
+
+  <property name="finger_tip_mu"              value="500.0" />
+  <property name="finger_mu"                  value="500.0" />
+  <property name="dist_joint_multiplier" value="0.3" />
+  <!-- base_link -->
+  <gazebo reference="barrett_base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+
+  <!-- finger_1_prox_link -->
+  <gazebo reference="finger_1_prox_link">
+    <material>Gazebo/Orange</material>
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+  </gazebo>
+    <gazebo reference="finger_1_prox_joint">
+      <stopKd value="${finger_stop_kd}" />
+      <stopKp value="${finger_stop_kp}" />
+      <fudgeFactor value="${finger_fudge_factor}" />
+      <provideFeedback value="true"/>
+    </gazebo>
+
+
+  <!-- finger_1_med_link -->
+  <gazebo reference="finger_1_med_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Black</material>
+  </gazebo>
+    <gazebo reference="finger_1_med_joint">
+      <stopKd value="${finger_stop_kd}" />
+      <stopKp value="${finger_stop_kp}" />
+      <fudgeFactor value="${finger_fudge_factor}" />
+      <provideFeedback value="true"/>
+    </gazebo>
+
+  <!-- finger_1_dist_link -->
+  <gazebo reference="finger_1_dist_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Orange</material>
+  </gazebo>
+    <gazebo reference="finger_1_dist_joint">
+      <stopKd value="${finger_stop_kd}" />
+      <stopKp value="${finger_stop_kp}" />
+      <fudgeFactor value="${finger_fudge_factor}" />
+      <provideFeedback value="true"/>
+    </gazebo>
+
+  <!-- finger_2_prox_link -->
+  <gazebo reference="finger_2_prox_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+
+  <!-- finger_2_med_link -->
+  <gazebo reference="finger_2_med_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- finger_2_dist_link -->
+  <gazebo reference="finger_2_dist_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- finger_3_med_link -->
+  <gazebo reference="finger_3_med_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- finger_3_dist_link -->
+  <gazebo reference="finger_3_dist_link">
+     <turnGravityOff>true</turnGravityOff>
+      <mu1 value="${finger_mu}" />
+      <mu2 value="${finger_mu}" />
+      <kp value="1000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+    <gazebo>
+      <plugin name="p3d_barrett_gripper_palm_controller" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <bodyName>barrett_base_link</bodyName>
+        <topicName>barrett_palm_pose_ground_truth</topicName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>world</frameName>
+      </plugin>
+
+      <!-- a formal implementation of grasp hack in gazebo with fixed joint -->
+      <gripper name="barrett_grasp_hack">
+        <grasp_check>
+          <attach_steps>20</attach_steps>
+          <detach_steps>40</detach_steps>
+          <min_contact_count>2</min_contact_count>
+        </grasp_check>
+        <gripper_link>finger_1_prox_link</gripper_link>
+        <gripper_link>finger_2_prox_link</gripper_link>
+        <palm_link>barrett_base_link</palm_link>
+      </gripper>
+    </gazebo>
+
+
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_1_med_joint</joint>
+            <mimicJoint>finger_1_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_2_med_joint</joint>
+            <mimicJoint>finger_2_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+  <gazebo>
+    	<plugin name="mimic_plugin" filename="libgazebo_mimic_plugin.so">
+            <joint>finger_3_med_joint</joint>
+            <mimicJoint>finger_3_dist_joint</mimicJoint>
+            <multiplier>1.0</multiplier>
+        </plugin>
+  </gazebo>
+
+</robot>
