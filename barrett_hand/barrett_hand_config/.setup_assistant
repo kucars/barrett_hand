@@ -1,8 +1,0 @@
-moveit_setup_assistant_config:
-  URDF:
-    package: barrett_hand_description
-    relative_path: robots/barrett_hand.urdf.xacro
-  SRDF:
-    relative_path: config/barrett_hand.srdf
-  CONFIG:
-    generated_timestamp: 1398005209
