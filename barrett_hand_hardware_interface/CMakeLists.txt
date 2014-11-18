@@ -15,8 +15,10 @@ find_package(catkin REQUIRED COMPONENTS
   libntcan 
   tf
   sensor_msgs
+  dynamic_reconfigure
+  message_generation
 )
-
+  
 find_package(PCL REQUIRED)
 
 include_directories(owd include ${catkin_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
@@ -25,7 +27,7 @@ add_subdirectory(owd)
 
 catkin_package(
   INCLUDE_DIRS owd include 
-  LIBRARIES barrett_hand_hardware_interface bhdcan openwam openmath ${CANBUS_LIBS}
+  LIBRARIES barrett_hand_hardware_interface_lib bhdcan openwam openmath ${CANBUS_LIBS}
   CATKIN_DEPENDS roscpp controller_manager libpcan libntcan tf 
   DEPENDS lapack blas gfortran PCL
 )
@@ -36,10 +38,10 @@ catkin_package(
 
 add_definitions("-O0 -ggdb3 -DWRIST -DBH8")
 
-add_library(barrett_hand_hardware_interface src/BarrettHandHardwareInterface.cpp owd/openwamdriver.cpp owd/bhd280.cc owd/ft.cc owd/tactile.cc)
-add_executable(barrett_hand_hardware_interface_node src/Robot.cpp)
+add_library(barrett_hand_hardware_interface_lib src/BarrettHandHardwareInterface.cpp owd/openwamdriver.cpp owd/bhd280.cc owd/ft.cc owd/tactile.cc)
+add_executable(bhand_hardware_interface src/Robot.cpp)
 #add_definitions("-BH280_ONLY -DBH280 -DBH280_ONLY ${CANBUS_DEFS}")
-target_link_libraries(barrett_hand_hardware_interface_node   barrett_hand_hardware_interface bhdcan openwam openmath lapack blas gfortran ${CANBUS_LIBS} ${catkin_LIBRARIES})
+target_link_libraries(bhand_hardware_interface   barrett_hand_hardware_interface_lib bhdcan openwam openmath lapack blas gfortran ${CANBUS_LIBS} ${catkin_LIBRARIES})
 
 
 

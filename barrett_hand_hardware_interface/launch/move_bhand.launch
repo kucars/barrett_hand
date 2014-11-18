@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+
+   <arg name="simulation" default="false" />
+
+   <!-- group if="$(arg simulation)" -->
+  	<!-- Load mitsubishi arm hardware interface and controller manager -->
+  	<!--include file="$(find mitsubishi_arm_gazebo)/launch/mitsubishi_arm_world.launch"/ -->
+
+  	<!-- Given the published joint states, publish tf for the robot links -->
+  	<!-- include file="$(find mitsubishi_arm_config)/launch/moveit_gazebo.launch"/ -->
+   <!--/group -->
+   <group unless="$(arg simulation)">
+  	<!-- Load mitsubishi arm hardware interface and controller manager -->
+  	<include file="$(find barrett_hand_hardware_interface)/launch/barrett_hand_hardware_interface.launch"/>
+
+  	<!-- Given the published joint states, publish tf for the robot links -->
+  	<include file="$(find barrett_hand_config)/launch/moveit.launch"/>
+   </group>
+
+  <!-- Load mitsubishi arm controllers -->
+  <include file="$(find barrett_hand_control)/launch/barrett_hand_control.launch"> 
+    <!--arg name="simulation" value="$(arg simulation)" / -->
+  </include>
+
+ 
+</launch>

@@ -150,7 +150,9 @@ bool BarrettHandHardwareInterface::init()
 
     hardware_interface::JointStateHandle state_handle_j7("finger_2_dist_joint", &pos[6], &vel[6], &eff[6]);
     jnt_state_interface.registerHandle(state_handle_j7);
-
+    
+    hardware_interface::JointStateHandle state_handle_j8("finger_3_dist_joint", &pos[7], &vel[7], &eff[7]);
+    jnt_state_interface.registerHandle(state_handle_j8);
 
     registerInterface(&jnt_state_interface);
 
@@ -175,7 +177,10 @@ bool BarrettHandHardwareInterface::init()
 
     hardware_interface::JointHandle pos_handle_j7(jnt_state_interface.getHandle("finger_2_dist_joint"), &pos_cmd[6]);
     jnt_pos_interface.registerHandle(pos_handle_j7);
-
+    
+    hardware_interface::JointHandle pos_handle_j8(jnt_state_interface.getHandle("finger_3_dist_joint"), &pos_cmd[7]);
+    jnt_pos_interface.registerHandle(pos_handle_j8);
+    
     registerInterface(&jnt_pos_interface);
 
     // connect and register the velocity interface
@@ -200,6 +205,9 @@ bool BarrettHandHardwareInterface::init()
     hardware_interface::JointHandle vel_handle_j7(jnt_state_interface.getHandle("finger_2_dist_joint"), &vel_cmd[6]);
     jnt_vel_interface.registerHandle(vel_handle_j7);
 
+    hardware_interface::JointHandle vel_handle_j8(jnt_state_interface.getHandle("finger_3_dist_joint"), &vel_cmd[7]);
+    jnt_vel_interface.registerHandle(vel_handle_j8);
+    
     registerInterface(&jnt_vel_interface);
 
     // connect and register the effort interface
@@ -224,6 +232,9 @@ bool BarrettHandHardwareInterface::init()
     hardware_interface::JointHandle eff_handle_j7(jnt_state_interface.getHandle("finger_2_dist_joint"), &eff_cmd[6]);
     jnt_eff_interface.registerHandle(eff_handle_j7);
 
+    hardware_interface::JointHandle eff_handle_j8(jnt_state_interface.getHandle("finger_3_dist_joint"), &eff_cmd[7]);
+    jnt_eff_interface.registerHandle(eff_handle_j8);
+    
     registerInterface(&jnt_eff_interface);
 
     return true;
