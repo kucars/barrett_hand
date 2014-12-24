@@ -5,4 +5,4 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/barrett_hand.srdf
   CONFIG:
-    generated_timestamp: 1398005209
+    generated_timestamp: 1419164805

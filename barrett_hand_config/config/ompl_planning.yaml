@@ -21,7 +21,7 @@ planner_configs:
     type: geometric::PRM
   PRMstarkConfigDefault:
     type: geometric::PRMstar
-barrett_hand:
+finger_1:
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
@@ -35,4 +35,34 @@ barrett_hand:
     - PRMkConfigDefault
     - PRMstarkConfigDefault
   projection_evaluator: joints(finger_1_prox_joint,finger_1_med_joint)
+  longest_valid_segment_fraction: 0.05
+finger_2:
+  planner_configs:
+    - SBLkConfigDefault
+    - ESTkConfigDefault
+    - LBKPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - KPIECEkConfigDefault
+    - RRTkConfigDefault
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+    - TRRTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
+  projection_evaluator: joints(finger_2_prox_joint,finger_2_med_joint)
+  longest_valid_segment_fraction: 0.05
+finger_3:
+  planner_configs:
+    - SBLkConfigDefault
+    - ESTkConfigDefault
+    - LBKPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - KPIECEkConfigDefault
+    - RRTkConfigDefault
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+    - TRRTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
+  projection_evaluator: joints(finger_3_med_joint,finger_3_dist_joint)
   longest_valid_segment_fraction: 0.05

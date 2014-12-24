@@ -1,8 +1,12 @@
 controller_list:
-  - name: fake_barrett_hand_controller
+  - name: fake_finger_1_controller
     joints:
       - finger_1_prox_joint
       - finger_1_med_joint
+  - name: fake_finger_2_controller
+    joints:
       - finger_2_prox_joint
       - finger_2_med_joint
+  - name: fake_finger_3_controller
+    joints:
       - finger_3_med_joint
