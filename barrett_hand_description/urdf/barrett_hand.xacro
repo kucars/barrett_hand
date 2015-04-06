@@ -370,7 +370,7 @@
   <transmission name="tran11">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_1_med_joint">
-        <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor11">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -381,7 +381,7 @@
   <transmission name="tran12">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_1_dist_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor12">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -392,7 +392,7 @@
   <transmission name="tran13">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_2_med_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor13">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -403,7 +403,7 @@
   <transmission name="tran14">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_2_dist_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor14">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -414,7 +414,7 @@
   <transmission name="tran15">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_3_med_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor15">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -425,7 +425,7 @@
   <transmission name="tran16">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_3_dist_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor16">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -436,7 +436,7 @@
   <transmission name="tran17">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_1_prox_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>    
     <actuator name="motor17">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -447,7 +447,7 @@
   <transmission name="tran18">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="finger_2_prox_joint">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor18">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
